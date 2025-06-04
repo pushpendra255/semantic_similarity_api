@@ -89,7 +89,16 @@ There, you can test your API using Swagger UI without any code!
 ## 📌 Notes
 
 - Ngrok sessions are temporary – they expire after a few hours.
-- For permanent deployment, consider Render, HuggingFace, or Deta Space.
+- For permanent deployment, consider Render, HuggingFace.
+----
+
+- 🚫 Why Not Render / Replit?
+This project is deployed on Google Colab because:
+🔹 Render and Replit have memory and storage limits that often fail with ML models
+🔹 Installation of large libraries like sentence-transformers causes errors on those platforms
+✅ Colab supports everything with no extra setup
+✅ Public API access is enabled instantly using ngrok
+🚀 It’s the most reliable and free option for quick model deployment and testing
 
 ---
 
