@@ -33,24 +33,29 @@ semantic_similarity_api/
 OR manually run the commands below in a new Colab notebook:
 
 ```python
-# 1. Clone the GitHub repo
+# 1. Clone your GitHub repo
 !git clone https://github.com/pushpendra255/semantic_similarity_api.git
 %cd semantic_similarity_api
 
-# 2. Install required packages
+# 2. Install dependencies
 !pip install -r requirements.txt
 !pip install fastapi nest_asyncio pyngrok uvicorn
 
-# 3. Start the FastAPI app using ngrok
+# 3. Setup ngrok
+!ngrok config add-authtoken 'YOUR API KEY'
+
+# 4. Start API with ngrok
 import nest_asyncio
 from pyngrok import ngrok
 import uvicorn
 
 nest_asyncio.apply()
+
 public_url = ngrok.connect(8000)
 print("🚀 Public URL:", public_url)
 
-!uvicorn main:app --host 0.0.0.0 --port=8000
+!uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
 ```
 
 ---
