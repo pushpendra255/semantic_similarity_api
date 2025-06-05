@@ -28,7 +28,7 @@ We’ve created a full **Colab Notebook** where you can run and test this API li
 
 ### ✅ Colab Notebook Link:
 
-👉 [Run Semantic Similarity API in Colab](https://colab.research.google.com/drive/your_colab_notebook_id)
+👉 [Run Semantic Similarity API in Colab]([https://colab.research.google.com/drive/your_colab_notebook_id](https://colab.research.google.com/drive/1VnXC-53Mciichjh4-NQNRtoixXjJRmt4?usp=sharing))
 
 ### 🧾 What does this notebook do?
 
