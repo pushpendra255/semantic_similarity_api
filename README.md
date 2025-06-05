@@ -1,112 +1,110 @@
-# 🧠 Semantic Similarity API (Lite Version) – Google Colab Deployment
+# 🔍 Semantic Similarity API
 
-This project provides an API to compute **semantic similarity** between two pieces of text using **FastAPI**, `sentence-transformers`, and **ngrok**, deployed directly from **Google Colab**.
-
----
+A FastAPI-based web service that computes semantic similarity between two text inputs using the `all-MiniLM-L6-v2` model from Sentence Transformers.
 
 ## 🚀 Features
-- Text similarity scoring API using cosine similarity
-- Hosted via FastAPI inside Colab
-- Public link via Ngrok tunnel
-- Minimal dependency and RAM usage
-- Auto API documentation at `/docs`
+
+* **FastAPI**: High-performance API framework.
+* **Sentence Transformers**: Uses `all-MiniLM-L6-v2` for embeddings.
+* **Cosine Similarity**: Measures sentence closeness.
+* **Swagger UI**: Easily test API from browser.
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
+
 ```
 semantic_similarity_api/
-├── main.py                # FastAPI app with endpoint
-├── requirements.txt       # Dependencies
-├── colab_ngrok_run.py     # Script to run API via Colab + ngrok
-├── README.md              # This file
+├── main.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## ▶️ How to Deploy via Google Colab
+## 🧪 How to Run and Test Using Google Colab
 
-### 🔗 1. Open Colab Notebook
+We’ve created a full **Colab Notebook** where you can run and test this API live without installing anything locally.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pushpendra255/semantic_similarity_api/blob/main/colab_ngrok_run.ipynb)
+### ✅ Colab Notebook Link:
 
-OR manually run the commands below in a new Colab notebook:
+👉 [Run Semantic Similarity API in Colab](https://colab.research.google.com/drive/your_colab_notebook_id)
 
-```python
-# 1. Clone your GitHub repo
-!git clone https://github.com/pushpendra255/semantic_similarity_api.git
-%cd semantic_similarity_api
+### 🧾 What does this notebook do?
 
-# 2. Install dependencies
-!pip install -r requirements.txt
-!pip install fastapi nest_asyncio pyngrok uvicorn
+It performs these steps:
 
-# 3. Setup ngrok
-!ngrok config add-authtoken 'YOUR API KEY'
+1. Installs necessary packages like `fastapi`, `uvicorn`, `pyngrok`, `sentence-transformers`, and `torch`.
+2. Defines and runs a FastAPI server for semantic similarity.
+3. Automatically generates a public **ngrok URL** to access the API from anywhere.
+4. Guides you to test the API via a browser or with JSON POST requests.
 
-# 4. Start API with ngrok
-import nest_asyncio
-from pyngrok import ngrok
-import uvicorn
+### 🧪 Expected Output:
 
-nest_asyncio.apply()
+Once you run all cells:
 
-public_url = ngrok.connect(8000)
-print("🚀 Public URL:", public_url)
+* You’ll see output like:
 
-!uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+  ```
+  🚀 Public URL: https://xxxx-xxx.ngrok-free.app
+  ```
 
-```
+* Go to:
 
----
+  ```
+  https://xxxx-xxx.ngrok-free.app/docs
+  ```
 
-## 📮 API Endpoint
+  You'll find Swagger UI with a `POST /similarity` endpoint.
 
-### `POST /similarity`
+* Test with:
 
-#### 🔹 Request JSON
-```json
-{
-  "text1": "Data science is an amazing field.",
-  "text2": "Machine learning is a part of data science."
-}
-```
+  ```json
+  {
+    "text1": "I love programming",
+    "text2": "Coding is my passion"
+  }
+  ```
 
-#### 🔹 Response
-```json
-{
-  "similarity score": 0.725
-}
-```
+  Output:
 
-### ✅ Live Swagger UI
-
-Once deployed in Colab, open:
-
-```
-https://<your-ngrok-id>.ngrok-free.app/docs
-```
-
-There, you can test your API using Swagger UI without any code!
+  ```json
+  {
+    "similarity_score": 0.798
+  }
+  ```
 
 ---
 
-## 📌 Notes
+## 🔧 Run Locally (Optional)
 
-- Ngrok sessions are temporary – they expire after a few hours.
-- For permanent deployment, consider Render, HuggingFace.
-----
+### 1. Clone the Repo:
 
-- 🚫 Why Not Render / Replit?
-This project is deployed on Google Colab because:
-🔹 Render and Replit have memory and storage limits that often fail with ML models
-🔹 Installation of large libraries like sentence-transformers causes errors on those platforms
-✅ Colab supports everything with no extra setup
-✅ Public API access is enabled instantly using ngrok
-🚀 It’s the most reliable and free option for quick model deployment and testing
+```bash
+git clone https://github.com/pushpendra255/semantic_similarity_api.git
+cd semantic_similarity_api
+```
+
+### 2. Install Dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the App:
+
+```bash
+uvicorn main:app --reload
+```
+
+Visit: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to test.
 
 ---
 
-## 👨‍💻 Author
-Built by [Pushpendra Bhadauriya](https://github.com/pushpendra255)  
-🧪 For educational and demo purposes
+## 📄 License
+
+MIT License. Free to use and modify.
+
+---
+
+For any issues or suggestions, feel free to raise an issue or contact the maintainer.
