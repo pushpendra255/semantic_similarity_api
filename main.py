@@ -14,4 +14,4 @@ def get_similarity(pair: TextPair):
     emb1 = model.encode(pair.text1, convert_to_tensor=True)
     emb2 = model.encode(pair.text2, convert_to_tensor=True)
     score = util.cos_sim(emb1, emb2).item()
-    return {"similarity score": round(score, 3)}
+    return {"similarity_score": round(score, 3)}
